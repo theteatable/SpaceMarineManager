@@ -65,7 +65,7 @@ public class Character : MonoBehaviour
 
     }
 
-    public void GenerateCharacter(SOCharacter SOCharlie = null, Location recruitLocation, Job jobType)
+    public void GenerateCharacter(Location recruitLocation, Job jobType, SOCharacter SOCharlie = null)
         {
             characterData = null;
             if (SOCharlie != null)
@@ -77,7 +77,8 @@ public class Character : MonoBehaviour
             {
                 characterData = ScriptableObject.CreateInstance<SOCharacter>();
 
-                characterData.species = recruitLocation.GetSpecies();
+                characterData.species = recruitLocation.GetRandomSpecies();
+
             }
 
 
