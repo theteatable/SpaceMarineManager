@@ -4,9 +4,9 @@ using SMercenaries.SNations;
 
 namespace SMercenaries.Global
 {
-    public class Company : MonoBehaviour
+    public class Battalion : MonoBehaviour
     {
-        public static Company Instance;
+        public static Battalion Instance;
 
         private void Awake()
         {
@@ -21,12 +21,12 @@ namespace SMercenaries.Global
         }
 
 
-        public string companyName;
-        //public Image companyFlag;;
+        public string BattalionName;
+        //public Image BattalionFlag;;
 
-        public string companyDescription;
-        public string companyColorA;
-        public string companyColorB;
+        public string BattalionDescription;
+        public string BattalionColorA;
+        public string BattalionColorB;
 
         public bool headquartersOnShip;
         public Habitation headquarters;

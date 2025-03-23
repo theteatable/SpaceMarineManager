@@ -25,11 +25,11 @@ namespace SMercenaries.Global
         public bool CheckReqs()
         {
             //Corporation Requirements check
-            Relationship tCorpRelate = Company.Instance.GetRelationshipCorp(CorporationReq);
+            Relationship tCorpRelate = Battalion.Instance.GetRelationshipCorp(CorporationReq);
             bool corpRelate = CorpRelationshipReq.CompareRelationships(tCorpRelate);
 
             //Nation Req check
-            Relationship tNationRelate = Company.Instance.GetRelationshipNat(NationReq);
+            Relationship tNationRelate = Battalion.Instance.GetRelationshipNat(NationReq);
             bool nationRelate = NationRelationshipReq.CompareRelationships(tNationRelate);
 
             //TODO: Decide how Technology and Contracts and Facilities are stored. 
