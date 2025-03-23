@@ -128,7 +128,12 @@ namespace SMercenaries.People
 
         }
 
+        public Character GenerateCharacter (bool isHireable, int somethingprobably, Job jobWanted )
+        {
+            Character character = ScriptableObject.CreateInstance<Character>();
 
+            return null;
+        }
 
     }
 }
