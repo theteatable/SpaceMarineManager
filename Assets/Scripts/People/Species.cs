@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 using SMercenaries.Global;
 
@@ -14,7 +15,7 @@ namespace SMercenaries.People
         public Globals.Gravity speciesNativeGrav;
         public Globals.Gravity[] speciesColonoizedGravs;
 
-        public Personality[] speciesPersonalityTypes;
+        public List<Personality> speciesPersonalityTypes;
 
         public StatBlock speciesMinStats;
         public StatBlock speciesMaxStats;

@@ -14,10 +14,10 @@ public class Character : MonoBehaviour
 
 
     //Personalities are totally random, the higher the personality score, the more boosts/bonues to actions taken between two SOCharacters.
-    public int PersonalityCompatabilityCheck(SOCharacter charlie)
+    public int PersonalityCompatabilityCheck(Character charlie)
     {
-        Personality tPersonality = charlie.personality;
-        int charlieCharm = charlie.Stats.Charm;
+        Personality tPersonality = charlie.characterData.personality;
+        int charlieCharm = charlie.characterData.Stats.Charm;
         int result = 0;
         result += this.characterData.personality.PersonalityTraitA == tPersonality.PersonalityTraitA ? 1 : 0;
 
@@ -34,7 +34,7 @@ public class Character : MonoBehaviour
         result += this.characterData.personality.PersonalityTraitD3 == tPersonality.PersonalityTraitD3 ? 1 : 0;
 
         int charmBonus = Math.Max(charlieCharm, this.characterData.Stats.Charm);
-        int charmBonusSameSpecies = charlie.species == this.characterData.species ? charmBonus : 0;
+        int charmBonusSameSpecies = charlie.characterData.species == this.characterData.species ? charmBonus : 0;
 
         charmBonus = (int)((charmBonus - (Globals.MaxStatLimit * 0.65)) / 0.15); // Charm bonus only gives +1/+2 if charm is 80%/95% the max Stat Value
 
@@ -65,7 +65,7 @@ public class Character : MonoBehaviour
 
     }
 
-    public void GenerateCharacter(Location recruitLocation, Job jobType, SOCharacter SOCharlie = null)
+    public void GenerateCharacter(Location recruitLocation, Job jobHiring, int fightingSkill = 5, Personality tPersonality = null, SOCharacter SOCharlie = null)
         {
             characterData = null;
             if (SOCharlie != null)
@@ -80,6 +80,7 @@ public class Character : MonoBehaviour
                 // Set species Information
                 characterData.species = recruitLocation.GetRandomSpecies();
                 characterData.personality = characterData.species.getRandomPersonality();
+                //Character.priorJobs
 
             }
 

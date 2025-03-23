@@ -24,6 +24,9 @@ namespace SMercenaries.People
 
         public Species species;
         public Personality personality;
+        public List<Job> priorJobs;
+
+
 
 
         [Header("Character General")]
@@ -70,6 +73,17 @@ namespace SMercenaries.People
         public int salary;
         public int bonus;
         public int performanceBonus;
+
+        [Flags]
+        public enum JobType // Come back to this after making a bunch of Job
+        {
+            None = 0,
+            Military = 1 << 1,
+            Research = 1 << 2,
+            Admin = 1 << 3,
+            Leader = 1 << 4,
+            Civilian = 1 << 5
+        }
 
 
 

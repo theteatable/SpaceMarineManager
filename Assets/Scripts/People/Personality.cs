@@ -17,7 +17,7 @@ namespace SMercenaries.People
         public StatBlock personalityStatBonuses;
 
      
-        // Random of x numbers, 4 our of 7 personality Traits match for good chemistry.
+        // Random of x numbers, 5 out of 10 personality Traits match for good chemistry.
         public int PersonalityTraitA { get; private set; } // Based on personality Type
 
         public int PersonalityTraitB1 { get; private set; } // 0, 1
@@ -29,6 +29,13 @@ namespace SMercenaries.People
         public int PersonalityTraitD1 { get; private set; } // 0, 1
         public int PersonalityTraitD2 { get; private set; } // 0, 1, 2,
         public int PersonalityTraitD3 { get; private set; } // 0, 1, 2, 3
+
+        public enum PersSubType
+        {
+            Aggressive,
+            Passive,
+            Other
+        }
 
         public enum PersonalityMatch
         {
