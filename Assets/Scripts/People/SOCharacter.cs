@@ -27,7 +27,7 @@ namespace SMercenaries.People
 
 
         [Header("Character General")]
-        public Dictionary<Job, int> previous_experience = new();
+        public List<Job> previous_experience;
         public Injury[] currentInjuries;
         public Injury[] previousInjuries;
         public SkillBlock interests;

@@ -19,26 +19,26 @@ public class Character : MonoBehaviour
         Personality tPersonality = charlie.personality;
         int charlieCharm = charlie.Stats.Charm;
         int result = 0;
-        result += this.personality.PersonalityTraitA == tPersonality.PersonalityTraitA ? 1 : 0;
+        result += this.characterData.personality.PersonalityTraitA == tPersonality.PersonalityTraitA ? 1 : 0;
 
-        result += this.personality.PersonalityTraitB1 == tPersonality.PersonalityTraitB1 ? 1 : 0;
-        result += this.personality.PersonalityTraitB2 == tPersonality.PersonalityTraitB2 ? 1 : 0;
-        result += this.personality.PersonalityTraitB3 == tPersonality.PersonalityTraitB3 ? 1 : 0;
+        result += this.characterData.personality.PersonalityTraitB1 == tPersonality.PersonalityTraitB1 ? 1 : 0;
+        result += this.characterData.personality.PersonalityTraitB2 == tPersonality.PersonalityTraitB2 ? 1 : 0;
+        result += this.characterData.personality.PersonalityTraitB3 == tPersonality.PersonalityTraitB3 ? 1 : 0;
 
-        result += this.personality.PersonalityTraitC1 == tPersonality.PersonalityTraitC1 ? 1 : 0;
-        result += this.personality.PersonalityTraitC2 == tPersonality.PersonalityTraitC2 ? 1 : 0;
-        result += this.personality.PersonalityTraitC3 == tPersonality.PersonalityTraitC3 ? 1 : 0;
+        result += this.characterData.personality.PersonalityTraitC1 == tPersonality.PersonalityTraitC1 ? 1 : 0;
+        result += this.characterData.personality.PersonalityTraitC2 == tPersonality.PersonalityTraitC2 ? 1 : 0;
+        result += this.characterData.personality.PersonalityTraitC3 == tPersonality.PersonalityTraitC3 ? 1 : 0;
 
-        result += this.personality.PersonalityTraitD1 == tPersonality.PersonalityTraitD1 ? 1 : 0;
-        result += this.personality.PersonalityTraitD2 == tPersonality.PersonalityTraitD2 ? 1 : 0;
-        result += this.personality.PersonalityTraitD3 == tPersonality.PersonalityTraitD3 ? 1 : 0;
+        result += this.characterData.personality.PersonalityTraitD1 == tPersonality.PersonalityTraitD1 ? 1 : 0;
+        result += this.characterData.personality.PersonalityTraitD2 == tPersonality.PersonalityTraitD2 ? 1 : 0;
+        result += this.characterData.personality.PersonalityTraitD3 == tPersonality.PersonalityTraitD3 ? 1 : 0;
 
-        int charmBonus = Math.Max(charlieCharm, this.Stats.Charm);
-        int charmBonusSameSpecies = charlie.species == this.species ? charmBonus : 0;
+        int charmBonus = Math.Max(charlieCharm, this.characterData.Stats.Charm);
+        int charmBonusSameSpecies = charlie.species == this.characterData.species ? charmBonus : 0;
 
         charmBonus = (int)((charmBonus - (Globals.MaxStatLimit * 0.65)) / 0.15); // Charm bonus only gives +1/+2 if charm is 80%/95% the max Stat Value
 
-        charmBonusSameSpecies = (int)(charmBonusSameSpecies - ((this.species.speciesMaxStats.Charm * .65) / .15)); // if SOCharacters are the same species, charmbonus gives +1/+2 depending on their species Max Charm
+        charmBonusSameSpecies = (int)(charmBonusSameSpecies - ((this.characterData.species.speciesMaxStats.Charm * .65) / .15)); // if SOCharacters are the same species, charmbonus gives +1/+2 depending on their species Max Charm
 
         charmBonus = Math.Max(charmBonus, charmBonusSameSpecies);
         charmBonus = Math.Max(charmBonus, 0); // No negative impacts of low charm. Sorry IncelMaxxers.
@@ -77,7 +77,9 @@ public class Character : MonoBehaviour
             {
                 characterData = ScriptableObject.CreateInstance<SOCharacter>();
 
+                // Set species Information
                 characterData.species = recruitLocation.GetRandomSpecies();
+                characterData.personality = characterData.species.getRandomPersonality();
 
             }
 

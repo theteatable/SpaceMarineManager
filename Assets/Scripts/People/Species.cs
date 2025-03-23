@@ -40,7 +40,11 @@ namespace SMercenaries.People
             Tentacle,
             DESIGNSPACE_INCLUDED_HERE
         }
-
+        public Personality getRandomPersonality()
+        {
+            int random = UnityEngine.Random.Range(0, speciesPersonalityTypes.Count);
+            return speciesPersonalityTypes[random];
+        }
 
     }
 }
