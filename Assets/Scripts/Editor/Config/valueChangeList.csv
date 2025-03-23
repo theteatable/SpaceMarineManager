@@ -1,0 +1,6 @@
+Value,StandardChange,Minimum,Maximum
+Stat,6,1,5000
+Skill,2,0,100
+Skill-Interest,1,0,50
+StatDivisor,50,50,50
+SkillDivisor,5,5,5
