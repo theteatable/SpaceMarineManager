@@ -3,7 +3,7 @@ using UnityEditor;
 
 namespace SMercenaries.Tooling
 {
-    public class DataUtilities
+    public static class DataUtilities
     {
         /// <summary>
         /// Searches through the Asset Database for assets of a specific type and loads them into memory
@@ -20,6 +20,18 @@ namespace SMercenaries.Tooling
                 values[i] = AssetDatabase.LoadAssetAtPath<T>(guidToPath);
             }
             return values;
+        }
+
+        /// <summary>
+        /// Attempts to retrieve a particular Monobehaviour Component from a GameObject, and if it is not present, adds it to the object.
+        /// </summary>
+        /// <typeparam name="T">the type of the component to retrieve</typeparam>
+        /// <param name="go">the GameObject to search for the component on</param>
+        /// <returns>The found or created component</returns>
+        public static T GetOrAddComponent<T>(this GameObject go) where T : Component
+        {
+            var comp = go.GetComponent<T>();
+            return comp != null ? comp : go.AddComponent<T>();
         }
     }
 }
