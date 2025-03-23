@@ -48,29 +48,29 @@ namespace SMercenaries.Global {
             NullG
         }
 
-        private static List<DataValue> ReadFromCSV(string path)
-        {
-            StreamReader streamReader = new StreamReader(path);
-            if (streamReader == null)
-            {
-                return null;
-            }
-            List<DataValue> data = new List<DataValue>();
-            string line = streamReader.ReadLine();
-            var titleSplit = line.Split(',');
-            _editorWindow.headerName = titleSplit[0];
-            _editorWindow.headerValueChange = titleSplit[1];
-            _editorWindow.headerMin = titleSplit[2];
-            _editorWindow.headerMax = titleSplit[3];
-            while ((line = streamReader.ReadLine()) != null)
-            {
-                var lineSplit = line.Split(',');
-                var newDatum = new DataValue(lineSplit[0], int.Parse(lineSplit[1]), int.Parse(lineSplit[2]), int.Parse(lineSplit[3]));
-                data.Add(newDatum);
-            }
-            streamReader.Dispose();
-            return data;
-        }
+        //private static List<DataValue> ReadFromCSV(string path)
+        //{
+        //    StreamReader streamReader = new StreamReader(path);
+        //    if (streamReader == null)
+        //    {
+        //        return null;
+        //    }
+        //    List<DataValue> data = new List<DataValue>();
+        //    string line = streamReader.ReadLine();
+        //    var titleSplit = line.Split(',');
+        //    _editorWindow.headerName = titleSplit[0];
+        //    _editorWindow.headerValueChange = titleSplit[1];
+        //    _editorWindow.headerMin = titleSplit[2];
+        //    _editorWindow.headerMax = titleSplit[3];
+        //    while ((line = streamReader.ReadLine()) != null)
+        //    {
+        //        var lineSplit = line.Split(',');
+        //        var newDatum = new DataValue(lineSplit[0], int.Parse(lineSplit[1]), int.Parse(lineSplit[2]), int.Parse(lineSplit[3]));
+        //        data.Add(newDatum);
+        //    }
+        //    streamReader.Dispose();
+        //    return data;
+        //}
 
 
 
