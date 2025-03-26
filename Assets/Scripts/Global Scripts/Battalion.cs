@@ -47,7 +47,10 @@ namespace SMercenaries.Global
             }
             else
             {
-                Relationship tRelate = new Relationship(0, 0, 0);
+                Relationship tRelate = ScriptableObject.CreateInstance<Relationship>();
+                tRelate.Knowledge = 0;
+                tRelate.TheirKnowledge = 0;
+                tRelate.Relation = 0;
                 relationCorp.Add(corpo, tRelate);
                 return relationCorp[corpo];
             }
@@ -60,7 +63,10 @@ namespace SMercenaries.Global
             }
             else
             {
-                Relationship tRelate = new Relationship(0, 0, 0);
+                Relationship tRelate = ScriptableObject.CreateInstance<Relationship>();
+                tRelate.Knowledge = 0;
+                tRelate.TheirKnowledge = 0;
+                tRelate.Relation = 0;
                 relationNation.Add(tNation, tRelate);
                 return relationNation[tNation];
             }

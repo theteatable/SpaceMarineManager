@@ -30,7 +30,7 @@ namespace SMercenaries.People
 
         [SerializeField] private JobSkill _jobSkill;
 
-
+        
 
 
 

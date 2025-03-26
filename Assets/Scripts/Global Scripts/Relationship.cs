@@ -4,23 +4,13 @@ namespace SMercenaries.Global
 {
     public class Relationship : ScriptableObject
     {
-        public int Knowledge { get; private set; }
-        public int Relation { get; private set; }
+        public int Knowledge { get; set; }
+        public int Relation { get; set; }
 
-        public int TheirKnowledge { get; private set; }
+        public int TheirKnowledge { get; set; }
 
 
         //TODO adjust set to reasonable amounts.
-
-        public Relationship() : this(0, 0, 0) { }
-
-        public Relationship(int knowledge = 0, int relation = 0, int theirKnowledge = 0)
-        {
-            Knowledge = knowledge;
-            Relation = relation;
-            TheirKnowledge = theirKnowledge;
-
-        }
 
         //TODO: Add method to compare two Relationship DONE?!
         //HACK: Did I do this right
