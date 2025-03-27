@@ -1,3 +1,4 @@
+using SMercenaries.Global;
 using UnityEngine;
 
 namespace SMercenaries.People
@@ -11,26 +12,26 @@ namespace SMercenaries.People
         public string jobDescription;
         //public Image icon;
 
-        public bool isFullTime;
-
         // The calculation should be something like 60% of bonus scaling up to 175% of bonus at cap
-        public int monthsMaxBonus;
-        public int monthsUnilTrained;
+        public bool isFullTime;
+        public int monthsUntilTrained;        
+        public int monthsUntilMaxBonus;
+
+
+        [Header("Game Updated Details")]
         public int monthsInJob;
+        public Date dateLastWorked;
 
 
 
+        [Header("StatBlock Information")]
         public StatBlock charGenerationStatBase;
+        
         public StatBlock statBonusesLead;
         public StatBlock statBonusesNotLead;
         public StatBlock statBonusesGeneral;
 
-        [Space]
-        [Header("Internal Job references")]
-
-        [SerializeField] private JobSkill _jobSkill;
-
-        
+        public SkillBlock skillExperienceGainedInJob;
 
 
 
