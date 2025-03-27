@@ -20,8 +20,8 @@ namespace SMercenaries.SNations
         // Caps Understanding at 150, with a soft cap at 100.
         //TODO: Number Reconfiguring
         [SerializeField] private int _maxUnderstanding = 150;
-        [SerializeField] private int _gatedUnderstand = 100;
-        [SerializeField] private int _gatedUnderstandingGrowth = 3;
+        [SerializeField] private int _limiterUnderstand = 100;
+        [SerializeField] private int _limiterUnderstandingGrowth = 3;
         [SerializeField] private int _understandingChange = 5;
         private int _understanding = 0;
         public int Understanding
@@ -34,7 +34,7 @@ namespace SMercenaries.SNations
             {
                 if (value > _maxUnderstanding)
                 {
-                    _understanding += _gatedUnderstandingGrowth;
+                    _understanding += _limiterUnderstandingGrowth;
                 }
                 else if (value < 0)
                 {
@@ -54,9 +54,9 @@ namespace SMercenaries.SNations
             {
                 _understanding = _maxUnderstanding;
             }
-            else if (_understanding > _gatedUnderstand && amount > 0)
+            else if (_understanding > _limiterUnderstand && amount > 0)
             {
-                _understanding += amount > _gatedUnderstandingGrowth? _gatedUnderstandingGrowth : amount;
+                _understanding += amount > _limiterUnderstandingGrowth ? _limiterUnderstandingGrowth : amount;
             }
             else
             {
