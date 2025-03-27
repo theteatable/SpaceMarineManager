@@ -30,9 +30,9 @@ namespace SMercenaries.People
 
 
         [Header("Character General")]
-        public List<Job> previous_experience;
-        public Injury[] currentInjuries;
-        public Injury[] previousInjuries;
+        public List<Job> jobExperience;
+        public List<Injury> currentInjuries;
+        public List<Injury> previousInjuries;
         public SkillBlock interests;
 
         public Globals.Handedness handedness;

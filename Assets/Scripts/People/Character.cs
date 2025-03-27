@@ -72,22 +72,30 @@ namespace SMercenaries.People
 
 
 
-        public void GenerateCharacter(Location recruitLocation, JobType? jobHiringFor = null, Injury[] injuriesAllowed = null, int? salaryMin = null, int? salaryMax = null, Job[] jobExperience = null, int? fightingSkill = null, StatBlock? statblock = null, SkillBlock? skillBlock = null, int? cost = null, Species species = null, Personality[] tPersonality = null, SOCharacter SOCharlie = null)
+        public void GenerateCharacter   (Location recruitLocation, JobType? jobHiringFor = null, Injury[] injuriesAllowed = null,
+                                        int? salaryMin = null, int? salaryMax = null, List<Job> jobExperience = null, int? fightingSkill = null, 
+                                        StatBlock? statblock = null, SkillBlock? skillBlock = null, int? cost = null, Species species = null,
+                                        List<Personality> tPersonality = null, SOCharacter SOCharlie = null)
         {
             characterData = null;
-            if (SOCharlie != null)
-            {
+            if (SOCharlie != null) {
                 characterData = SOCharlie;
-   
+
             }
-            else
-            {
+            else {
                 characterData = ScriptableObject.CreateInstance<SOCharacter>();
 
                 // Set species Information
-                characterData.species = recruitLocation.GetRandomSpecies();
-                characterData.personality = characterData.species.getRandomPersonality();
-                //Character.priorJobs
+                characterData.species = species != null ? species : recruitLocation.GetRandomSpecies();
+                characterData.personality = tPersonality != null ? characterData.personality.getRandomPersonality(tPersonality) : characterData.species.getRandomPersonality();
+                
+
+                //if (jobExperience != null) {
+                //    foreach (Job job in jobExperience) {
+
+                //    }
+                //characterData.jobExperience = jobExperience != null ? jobExperience :
+                
 
             }
 
