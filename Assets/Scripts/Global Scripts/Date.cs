@@ -72,10 +72,10 @@ namespace SMercenaries.Global
         }
         public Date GetPastDate(int pastDay = 1, int pastWeek = 0, int pastMonth = 0, int pastYear = 0)
         {
-            pastDay = this.Day - System.Math.Abs(pastDay);
-            pastWeek = this.Week - System.Math.Abs(pastWeek);
-            pastMonth = this.Month - System.Math.Abs(pastMonth);
-            pastYear = this.Year - System.Math.Abs(pastYear);
+            pastDay = this.Day - (int)System.Math.Abs((decimal)pastDay);
+            pastWeek = this.Week - (int)System.Math.Abs((decimal)pastWeek);
+            pastMonth = this.Month - (int)System.Math.Abs((decimal)pastMonth);
+            pastYear = this.Year - (int)System.Math.Abs((decimal)pastYear);
 
             while (pastDay < 0)
             {

@@ -17,10 +17,14 @@ namespace SMercenaries.People
         public int monthsUntilTrained;        
         public int monthsUntilMaxBonus;
 
+        public int jobDanger; //Gets this from locations/job details.
+                              //The longer you survive, the more experience you get?
+
+
 
         [Header("Game Updated Details")]
         public int monthsInJob;
-        public Date dateLastWorked;
+        public Date dateLastWorked; //Used to calculate skills falling
 
 
 
@@ -30,8 +34,11 @@ namespace SMercenaries.People
         public StatBlock statBonusesLead;
         public StatBlock statBonusesNotLead;
         public StatBlock statBonusesGeneral;
-
-        public SkillBlock skillExperienceGainedInJob;
+        
+        public SkillBlock skillExpGrowth; // if skills are between 1 and 10, they should gain no more than 2 or 3 levels from a couple years of working this.
+                                                      // Faster growth during training, then random spurts over the years?
+        public SkillBlock skillLimitereStart;
+        public SkillBlock limiterSkillGrowth;
 
 
 

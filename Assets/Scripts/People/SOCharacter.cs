@@ -15,9 +15,9 @@ namespace SMercenaries.People
         [Header("Character Identifiers")]
         public string charName;
         //TODO: Create Date Class and calculate age from that.
-        //public MyDateSystem birthDay;
+        public Date birthDay;
         //TODO: Create Facility Class, move this field to the proper location
-        //public Dictionary<MyDateSystem, Facility> timesReborn = new();
+        
 
         public Nation nationBirth;
         //public Location current_location;
@@ -33,7 +33,7 @@ namespace SMercenaries.People
         public Job jobExperiencePrimary;
         public Job jobExperienceSecondary;
         public Job jobExperienceTertiary;
-        public List<Injury> currentInjuries;
+        public List<Injury> currentInjuries; //tracks regrowths.
         public List<Injury> previousInjuries;
         public SkillBlock interests;
 

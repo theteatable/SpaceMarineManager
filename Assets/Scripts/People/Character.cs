@@ -21,6 +21,13 @@ namespace SMercenaries.People
             Trainer = 1 <<3,
             Story
         }
+        public enum Age
+        {
+            Young, // within +-10% of age of maturity and lifespan
+            MiddleAged, //10-30% of age of maturity and lifespan
+            Old, //30-65% age of maturiy and lifespan
+            Ancient, // 65-95% age of maturity and lifespan
+        }
     //Personalities are totally random, the higher the personality score, the more boosts/bonues to actions taken between two SOCharacters.
         public int PersonalityCompatabilityCheck(Character charlie)
         {
@@ -75,7 +82,7 @@ namespace SMercenaries.People
         public void GenerateCharacter   (Location recruitLocation, JobType? jobHiringFor = null, Injury[] injuriesAllowed = null,
                                         int? salaryMin = null, int? salaryMax = null, List<Job> jobExperience = null, int? fightingSkill = null, 
                                         StatBlock? statblock = null, SkillBlock? skillBlock = null, int? cost = null, Species species = null,
-                                        List<Personality> tPersonality = null, SOCharacter SOCharlie = null)
+                                        List<Personality> tPersonality = null, Age? age = null, SOCharacter SOCharlie = null)
         {
             characterData = null;
             if (SOCharlie != null) {
@@ -88,7 +95,10 @@ namespace SMercenaries.People
                 // Set species Information
                 characterData.species = species != null ? species : recruitLocation.GetRandomSpecies();
                 characterData.personality = tPersonality != null ? characterData.personality.getRandomPersonality(tPersonality) : characterData.species.getRandomPersonality();
-                
+                int monthsOfLife = characterData.species.lifeSpan - characterData.species.ageOfMaturity;
+                characterData.birthDay = age switch {
+                    Age.Young => Calendar.CalInstance.GetPastDate(  pastDay = Random.Range(0,Globals.WeekLength), pastWeek = Random.Range(0, Globals.WeekLength), 
+                                                                    pastMonth = (int)(monthsOfLife * Random.Range());
 
                 //if (jobExperience != null) {
                 //    foreach (Job job in jobExperience) {
