@@ -3,6 +3,7 @@ using SMercenaries.Global;
 using System.Runtime.CompilerServices;
 using NUnit.Framework;
 using System.Reflection;
+using System.Collections.Generic;
 
 namespace SMercenaries.People
 {
@@ -15,9 +16,11 @@ namespace SMercenaries.People
 
         public SkillBlock personalityInterest;
         public StatBlock personalityStatBonuses;
+        public List<Job> jobInterests;
 
      
         // Random of x numbers, 5 out of 10 personality Traits match for good chemistry.
+        //TODO: initialize all these as random numbers
         public int PersonalityTraitA { get; private set; } // Based on personality Type
 
         public int PersonalityTraitB1 { get; private set; } // 0, 1
@@ -34,7 +37,7 @@ namespace SMercenaries.People
         {
             Aggressive,
             Passive,
-            Other
+            Other //TODO: increase list length after creating several personalities
         }
 
         public enum PersonalityMatch
@@ -46,7 +49,11 @@ namespace SMercenaries.People
             Great = 6,
             Excellent = 7, //TODO: Fix these names at some point
         }
-
+        public Personality getRandomPersonality(List<Personality> tPersonality)
+        {
+            int random = UnityEngine.Random.Range(0, tPersonality.Count);
+            return tPersonality[random];
+        }
 
 
     }

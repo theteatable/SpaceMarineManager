@@ -23,6 +23,9 @@ namespace SMercenaries.People
 
         public HandType speciesHandType;
         public Globals.Socialability socialability;
+        public int ageOfMaturity; //In months
+        public int lifeSpan; //In Months
+
 
         //public CharacterSkill[] talents;
 

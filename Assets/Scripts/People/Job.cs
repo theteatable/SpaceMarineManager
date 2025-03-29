@@ -1,3 +1,4 @@
+using SMercenaries.Global;
 using UnityEngine;
 
 namespace SMercenaries.People
@@ -11,26 +12,33 @@ namespace SMercenaries.People
         public string jobDescription;
         //public Image icon;
 
-        public bool isFullTime;
-
         // The calculation should be something like 60% of bonus scaling up to 175% of bonus at cap
-        public int monthsMaxBonus;
-        public int monthsUnilTrained;
+        public bool isFullTime;
+        public int monthsUntilTrained;        
+        public int monthsUntilMaxBonus;
+
+        public int jobDanger; //Gets this from locations/job details.
+                              //The longer you survive, the more experience you get?
+
+
+
+        [Header("Game Updated Details")]
         public int monthsInJob;
+        public Date dateLastWorked; //Used to calculate skills falling
 
 
 
+        [Header("StatBlock Information")]
         public StatBlock charGenerationStatBase;
+        
         public StatBlock statBonusesLead;
         public StatBlock statBonusesNotLead;
         public StatBlock statBonusesGeneral;
-
-        [Space]
-        [Header("Internal Job references")]
-
-        [SerializeField] private JobSkill _jobSkill;
-
         
+        public SkillBlock skillExpGrowth; // if skills are between 1 and 10, they should gain no more than 2 or 3 levels from a couple years of working this.
+                                                      // Faster growth during training, then random spurts over the years?
+        public SkillBlock skillLimitereStart;
+        public SkillBlock limiterSkillGrowth;
 
 
 
