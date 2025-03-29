@@ -23,11 +23,11 @@ namespace SMercenaries.Global {
 
         private static string VALUE_CHANGE_LIST_FILEPATH = "Assets/Scripts/Editor/Config/valueChangeList.csv";
 
-        public const int DayLength = 12; // number of hours
-        public const int WeekLength = 6; // number of days 
+        public const int hoursInDay = 12; // number of hours
+        public const int daysInWeek = 6; // number of days 
         
-        public const int MonthLength = 6; // number of weeks
-        public const int YearLength  = 12; // number of months
+        public const int weeksInMonth = 6; // number of weeks
+        public const int monthsInYear  = 12; // number of months
         public static int InjuryArraySizeDefault { get; private set; } = 8;
         public static int MaxStatLimit { get; private set; } = 5000; //TODO: make a file reader.
 
