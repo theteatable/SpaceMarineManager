@@ -4,6 +4,7 @@ using System.IO;
 using System.Xml.Serialization;
 using UnityEditor;
 using UnityEngine;
+using System;
 
 namespace SMercenaries.Global {
     public class Globals : MonoBehaviour {
@@ -21,7 +22,10 @@ namespace SMercenaries.Global {
             }
         }
 
-        private static string VALUE_CHANGE_LIST_FILEPATH = "Assets/Scripts/Editor/Config/valueChangeList.csv";
+       // private static string VALUE_CHANGE_LIST_FILEPATH = "Assets/Scripts/Editor/Config/valueChangeList.csv";
+        //private static Int32 randomSeed;
+
+
 
         public const int hoursInDay = 12; // number of hours
         public const int daysInWeek = 6; // number of days 
@@ -47,6 +51,10 @@ namespace SMercenaries.Global {
             StandardG,
             NullG
         }
+
+        public System.Random rand = new System.Random(); //TODO: Implement randomSeed into this
+
+
 
         //private static List<DataValue> ReadFromCSV(string path)
         //{

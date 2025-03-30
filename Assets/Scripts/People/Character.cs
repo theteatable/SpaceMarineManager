@@ -19,14 +19,14 @@ namespace SMercenaries.People
             Officer = 1 <<1,
             Researcher = 1 <<2,
             Trainer = 1 <<3,
-            Story
+            Story = 1 <<4
         }
         public enum Age
         {
             Young, // within +-10% of age of maturity and lifespan
-            MiddleAged, //10-30% of age of maturity and lifespan
-            Old, //30-65% age of maturiy and lifespan
-            Ancient, // 65-95% age of maturity and lifespan
+            Prime, //10-30% of age of maturity and lifespan
+            MiddleAge, //30-65% age of maturiy and lifespan
+            Ancient // 65-95% age of maturity and lifespan
         }
     //Personalities are totally random, the higher the personality score, the more boosts/bonues to actions taken between two SOCharacters.
         public int PersonalityCompatabilityCheck(Character charlie)
@@ -96,9 +96,25 @@ namespace SMercenaries.People
                 characterData.species = species != null ? species : recruitLocation.GetRandomSpecies();
                 characterData.personality = tPersonality != null ? characterData.personality.getRandomPersonality(tPersonality) : characterData.species.getRandomPersonality();
                 int monthsOfLife = characterData.species.lifeSpan - characterData.species.ageOfMaturity;
-                characterData.birthDay = age switch {
-                    Age.Young => Calendar.CalInstance.GetPastDate(  pastDay = Random.Range(0,Globals.WeekLength), pastWeek = Random.Range(0, Globals.WeekLength), 
-                                                                    pastMonth = (int)(monthsOfLife * Random.Range());
+                characterData.birthDay = age switch
+                {
+                    Age.Young => Calendar.CalInstance.GetPastDate(pastDay: Globals.Instance.rand.Next(0, Globals.daysInWeek),
+                                                                    pastWeek: Globals.Instance.rand.Next(0, Globals.weeksInMonth),
+                                                                    pastMonth: (int)(monthsOfLife * Globals.Instance.rand.Next(-20, 21) / 200)), // -10% to +10% in steps of 0.5%  (( x * 20 / 200 == x / 10 == 10% of x ))
+                                                                  
+                    Age.Prime => Calendar.CalInstance.GetPastDate(pastDay: Globals.Instance.rand.Next(0, Globals.daysInWeek),
+                                                                    pastWeek: Globals.Instance.rand.Next(0, Globals.weeksInMonth),
+                                                                    pastMonth: (int)(monthsOfLife * Globals.Instance.rand.Next(20, 61) / 200)), // 10-30%% in steps of 0.5% 
+                                                                  
+                    Age.MiddleAge => Calendar.CalInstance.GetPastDate(pastDay: Globals.Instance.rand.Next(0, Globals.daysInWeek),
+                                                                    pastWeek: Globals.Instance.rand.Next(0, Globals.weeksInMonth),
+                                                                    pastMonth: (int)(monthsOfLife * Globals.Instance.rand.Next(60, 131) / 200)), // 30% to +65% in steps of 0.5% 
+
+                    Age.Ancient => Calendar.CalInstance.GetPastDate(pastDay: Globals.Instance.rand.Next(0, Globals.daysInWeek),
+                                                                    pastWeek: Globals.Instance.rand.Next(0, Globals.weeksInMonth),
+                                                                    pastMonth: (int)(monthsOfLife * Globals.Instance.rand.Next(130, 191) / 200)) // -65% to +95% in steps of 0.5%                                                                    
+                };
+
 
                 //if (jobExperience != null) {
                 //    foreach (Job job in jobExperience) {
