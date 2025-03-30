@@ -15,11 +15,11 @@ namespace SMercenaries.People
         public enum JobType
         {
             None = 0,
-            Marine = 1 <<0,
-            Officer = 1 <<1,
-            Researcher = 1 <<2,
-            Trainer = 1 <<3,
-            Story = 1 <<4
+            Marine = 1 << 0,
+            Officer = 1 << 1,
+            Researcher = 1 << 2,
+            Trainer = 1 << 3,
+            Story = 1 << 4
         }
         public enum Age
         {
@@ -28,7 +28,7 @@ namespace SMercenaries.People
             MiddleAge, //30-65% age of maturiy and lifespan
             Ancient // 65-95% age of maturity and lifespan
         }
-    //Personalities are totally random, the higher the personality score, the more boosts/bonues to actions taken between two SOCharacters.
+        //Personalities are totally random, the higher the personality score, the more boosts/bonues to actions taken between two SOCharacters.
         public int PersonalityCompatabilityCheck(Character charlie)
         {
             Personality tPersonality = charlie.characterData.personality;
@@ -79,54 +79,80 @@ namespace SMercenaries.People
 
 
 
-        public void GenerateCharacter   (Location recruitLocation, JobType? jobHiringFor = null, Injury[] injuriesAllowed = null,
-                                        int? salaryMin = null, int? salaryMax = null, List<Job> jobExperience = null, int? fightingSkill = null, 
+        public void GenerateCharacter(Location recruitLocation, JobType? jobHiringFor = null, List<Injury> injuriesAllowed = null,
+                                        int? salaryMin = null, int? salaryMax = null, List<Job> jobExperiencePrime = null, List<Job> jobExperienceSec = null, List<Job> jobExperienceTert = null, int? fightingSkill = null,
                                         StatBlock? statblock = null, SkillBlock? skillBlock = null, int? cost = null, Species species = null,
-                                        List<Personality> tPersonality = null, Age? age = null, SOCharacter SOCharlie = null)
+                                        List<Personality> tPersonality = null, List<Age> ageList = null, SOCharacter SOCharlie = null)
         {
             characterData = null;
-            if (SOCharlie != null) {
+            if (SOCharlie != null)
+            {
                 characterData = SOCharlie;
 
             }
-            else {
+            else
+            {
                 characterData = ScriptableObject.CreateInstance<SOCharacter>();
 
                 // Set species Information
                 characterData.species = species != null ? species : recruitLocation.GetRandomSpecies();
                 characterData.personality = tPersonality != null ? characterData.personality.getRandomPersonality(tPersonality) : characterData.species.getRandomPersonality();
+                
                 int monthsOfLife = characterData.species.lifeSpan - characterData.species.ageOfMaturity;
+                Age age;
+                if (ageList != null)
+                {
+                    age = ageList[Globals.Instance.rand.Next(ageList.Count - 1)];
+                }
+                else
+                {
+                    age = (Age)Globals.Instance.rand.Next(4);
+                }
+                characterData.initAge = age;
                 characterData.birthDay = age switch
                 {
                     Age.Young => Calendar.CalInstance.GetPastDate(pastDay: Globals.Instance.rand.Next(0, Globals.daysInWeek),
                                                                     pastWeek: Globals.Instance.rand.Next(0, Globals.weeksInMonth),
                                                                     pastMonth: (int)(monthsOfLife * Globals.Instance.rand.Next(-20, 21) / 200)), // -10% to +10% in steps of 0.5%  (( x * 20 / 200 == x / 10 == 10% of x ))
-                                                                  
+
                     Age.Prime => Calendar.CalInstance.GetPastDate(pastDay: Globals.Instance.rand.Next(0, Globals.daysInWeek),
                                                                     pastWeek: Globals.Instance.rand.Next(0, Globals.weeksInMonth),
                                                                     pastMonth: (int)(monthsOfLife * Globals.Instance.rand.Next(20, 61) / 200)), // 10-30%% in steps of 0.5% 
-                                                                  
+
                     Age.MiddleAge => Calendar.CalInstance.GetPastDate(pastDay: Globals.Instance.rand.Next(0, Globals.daysInWeek),
                                                                     pastWeek: Globals.Instance.rand.Next(0, Globals.weeksInMonth),
                                                                     pastMonth: (int)(monthsOfLife * Globals.Instance.rand.Next(60, 131) / 200)), // 30% to +65% in steps of 0.5% 
 
                     Age.Ancient => Calendar.CalInstance.GetPastDate(pastDay: Globals.Instance.rand.Next(0, Globals.daysInWeek),
                                                                     pastWeek: Globals.Instance.rand.Next(0, Globals.weeksInMonth),
-                                                                    pastMonth: (int)(monthsOfLife * Globals.Instance.rand.Next(130, 191) / 200)) // -65% to +95% in steps of 0.5%                                                                    
+                                                                    pastMonth: (int)(monthsOfLife * Globals.Instance.rand.Next(130, 191) / 200)), // -65% to +95% in steps of 0.5%                                                                    
+                    _ => Calendar.CalInstance.GetPastDate(pastDay: Globals.Instance.rand.Next(0, Globals.daysInWeek),
+                                                                    pastWeek: Globals.Instance.rand.Next(0, Globals.weeksInMonth),
+                                                                    pastMonth: (int)(monthsOfLife * Globals.Instance.rand.Next(-20, 21) / 200))
                 };
+                if (jobExperienceTert != null)
+                {
+                    characterData.jobExperienceTertiary = jobExperienceTert[Globals.Instance.rand.Next(jobExperienceTert.Count)];
+                    characterData.jobExperienceSecondary = jobExperienceSec[Globals.Instance.rand.Next(jobExperienceSec.Count)];
+                    characterData.jobExperiencePrimary = jobExperiencePrime[Globals.Instance.rand.Next(jobExperiencePrime.Count)];
+                }
+                else if (jobExperienceSec != null)
+                {
+                    characterData.jobExperienceSecondary = jobExperienceSec[Globals.Instance.rand.Next(jobExperienceSec.Count)];
+                    characterData.jobExperiencePrimary = jobExperiencePrime[Globals.Instance.rand.Next(jobExperiencePrime.Count)];
+                }
+                else if (jobExperiencePrime != null)
+                {
+                    characterData.jobExperiencePrimary = jobExperiencePrime[Globals.Instance.rand.Next(jobExperiencePrime.Count)];
+                }
+                else
+                {
 
+                }
 
-                //if (jobExperience != null) {
-                //    foreach (Job job in jobExperience) {
-
-                //    }
-                //characterData.jobExperience = jobExperience != null ? jobExperience :
-                
 
             }
 
-
         }
-    
     }
 }
