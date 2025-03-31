@@ -40,6 +40,15 @@ namespace SMercenaries.People
         public SkillBlock skillLimitereStart;
         public SkillBlock limiterSkillGrowth;
 
+        public enum JobType
+        {
+            Military,
+            Civilian,
+            Research, 
+            Training, 
+            Other
+        }
+
 
 
         

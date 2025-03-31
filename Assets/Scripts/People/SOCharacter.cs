@@ -31,9 +31,9 @@ namespace SMercenaries.People
 
 
         [Header("Character General")]
-        public Job jobExperiencePrimary;
-        public Job jobExperienceSecondary;
-        public Job jobExperienceTertiary;
+        public Job jobExperiencePrimary;  
+        public Job jobExperienceSecondary; // If prime and secondary job, prime provides 65% of bonuses, secondary provides 35%
+        public Job jobExperienceTertiary; // if prime, secondary and tertiary job, prime provides 60% secondary provides 25% and tert provides 15%
 
         public List<Injury> currentInjuries; //tracks regrowths.
         public List<Injury> previousInjuries;

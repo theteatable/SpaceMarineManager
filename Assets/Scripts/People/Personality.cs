@@ -16,7 +16,7 @@ namespace SMercenaries.People
 
         public SkillBlock personalityInterest;
         public StatBlock personalityStatBonuses;
-        public List<Job> jobInterests;
+        public List<Job.JobType> jobTypeInterests;
 
      
         // Random of x numbers, 5 out of 10 personality Traits match for good chemistry.

@@ -83,6 +83,8 @@ namespace SMercenaries.People
                                         int? salaryMin = null, int? salaryMax = null, List<Job> jobExperiencePrime = null, List<Job> jobExperienceSec = null, List<Job> jobExperienceTert = null, int? fightingSkill = null,
                                         StatBlock? statblock = null, SkillBlock? skillBlock = null, int? cost = null, Species species = null,
                                         List<Personality> tPersonality = null, List<Age> ageList = null, SOCharacter SOCharlie = null)
+            // Some of these options will not be available to the player.  
+            //Still deciding if I should generate x number of candidates and then only show the ones that fall in their requests, or generate a character within all of their requests.
         {
             characterData = null;
             if (SOCharlie != null)
@@ -147,6 +149,8 @@ namespace SMercenaries.People
                 }
                 else
                 {
+
+
 
                 }
 
