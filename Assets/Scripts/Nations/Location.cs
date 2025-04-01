@@ -29,7 +29,11 @@ namespace SMercenaries.SNations
             int random = Random.Range(0, speciesList.Count);
             return speciesList[random];
         }
+        public Job[] GetLocalJobs()
+        {
 
+            return null;
+        }
 
      }
 }

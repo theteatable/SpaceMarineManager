@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using SMercenaries.People;
+
 namespace SMercenaries.SNations
 {
     public class Habitation : ScriptableObject
@@ -7,6 +9,8 @@ namespace SMercenaries.SNations
 
 
         public List<Facility> localFacilities;
+
+        public List<Job> localJobs;
 
         public bool inContention; // if there is a contract occuring on site.
 
@@ -21,5 +25,18 @@ namespace SMercenaries.SNations
             DysonSphere
             //WorldShip TODO: implement a ship class 
         }
+
+        public List<Facility> GetNotableFacilities()
+        {
+            List<Facility> facilities = new List<Facility>();
+            foreach (Facility facility in localFacilities)
+            {
+                if (facility.facilityTier == Facility.FacilityTier.Notable || facility.facilityTier == Facility.FacilityTier.AncientEra)
+                {
+                    facilities.Add(facility);
+                }
+            }
+
+            return facilities;
     }
 }

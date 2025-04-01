@@ -149,7 +149,7 @@ namespace SMercenaries.People
                 }
                 else
                 {
-
+                    //Personality, Job hiring for, Location
 
 
                 }

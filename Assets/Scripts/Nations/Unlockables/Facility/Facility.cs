@@ -47,6 +47,7 @@ namespace SMercenaries.SNations
             Basic,
             Intermediate,
             Advanced,
+            Notable,
             AncientEra
         }
         //public FacilityType facilityBaseType;
