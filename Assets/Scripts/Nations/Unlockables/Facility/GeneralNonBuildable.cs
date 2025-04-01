@@ -10,8 +10,7 @@ namespace SMercenaries.SNations
         public int size;
 
         public LandType type;
-
-        public List<Job> GeneralJobs;
+        public List<Job> GeneralJobs; //TODO:Decide if this is where I'm s
 
         public enum LandType
         {

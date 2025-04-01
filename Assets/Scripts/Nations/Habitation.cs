@@ -1,19 +1,38 @@
 using UnityEngine;
 using System.Collections.Generic;
 using SMercenaries.People;
+using System;
 
 namespace SMercenaries.SNations
 {
     public class Habitation : ScriptableObject
     {
 
-
+        public HabitationType Type;
         public List<Facility> localFacilities;
 
-        public List<Job> localJobs;
+
+        public Production primaryProduction; 
+        public Production secondaryProduction;
+
+        public List<Production> MinimalProductionOf; //
+        public List<Production> zeroProductionOf; //an asteroid might have 0 farmers.
+
 
         public bool inContention; // if there is a contract occuring on site.
+        
 
+        public enum Production
+        {
+            Food,
+            Resources,
+            Industry,
+            Urban,
+            Pleasure,
+            Capital,
+            Pirate,
+            Training
+        }
         public enum HabitationType
         {
             Planet,
@@ -38,5 +57,6 @@ namespace SMercenaries.SNations
             }
 
             return facilities;
-    }
+        }
+    } 
 }
