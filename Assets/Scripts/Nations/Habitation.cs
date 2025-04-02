@@ -10,29 +10,10 @@ namespace SMercenaries.SNations
 
         public HabitationType Type;
         public List<Facility> localFacilities;
-
-
-        public Production primaryProduction; 
-        public Production secondaryProduction;
-
-        public List<Production> MinimalProductionOf; //
-        public List<Production> zeroProductionOf; //an asteroid might have 0 farmers.
-
+        public Dictionary<Job.JobType, int> jobWeights;
 
         public bool inContention; // if there is a contract occuring on site.
         
-
-        public enum Production
-        {
-            Food,
-            Resources,
-            Industry,
-            Urban,
-            Pleasure,
-            Capital,
-            Pirate,
-            Training
-        }
         public enum HabitationType
         {
             Planet,
@@ -58,5 +39,27 @@ namespace SMercenaries.SNations
 
             return facilities;
         }
+
+        //Food,
+        //Resources,
+        //Military,
+        //Industry,
+        //Pleasure,
+        //Training,
+        //Research,
+        //Medical,
+        //Cloning,
+        //Political,
+        //Capital,
+        //Pirate,
+        //Urban,
+        //RuralNonFood
+        public Dictionary<Job, int> GetHiringJobs()
+        {
+
+
+            return null;
+        }
+
     } 
 }

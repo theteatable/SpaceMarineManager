@@ -42,11 +42,25 @@ namespace SMercenaries.People
 
         public enum JobType
         {
+            //Military, 
+            //Civilian,
+            //Research, 
+            //Training,
+            //The following are taken from production type in the Class Habitation
+            Food,
+            Resources,
             Military,
-            Civilian,
-            Research, 
-            Training, 
-            Other
+            Industry,
+            Pleasure,
+            Training,
+            Research,
+            Medical,
+            Cloning,
+            Political,
+            Capital,
+            Pirate,
+            Urban,
+            RuralNonFood
         }
 
 
