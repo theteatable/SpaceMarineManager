@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b24b6501e58d28f41813c6f9769313b7, type: 3}
-  m_Name: Unassigned
+  m_Script: {fileID: 11500000, guid: 1682776029058874f953681528c1eb1a, type: 3}
+  m_Name: AllScriptableObjects
   m_EditorClassIdentifier: 
-  jobName: Unassigned
-  jobDescription: Not yet given a job
-  isFullTime: 1
-  _jobBonus: 0
-  _jobSkill: {fileID: 11400000, guid: e69512a1483102d48aba65cf4718c779, type: 2}
