@@ -23,19 +23,18 @@ namespace SMercenaries.Global {
                 Instance = this;
             }
         }
-       // private static string VALUE_CHANGE_LIST_FILEPATH = "Assets/Scripts/Editor/Config/valueChangeList.csv";
-        //private static Int32 randomSeed;
+       
 
 
-
+        //TODO: Move these back to the date class. They aren't needed elsewhere.
         public const int hoursInDay = 12; // number of hours
         public const int daysInWeek = 6; // number of days 
-        
-        public const int weeksInMonth = 6; // number of weeks
-        public const int monthsInYear  = 12; // number of months
-        public static int InjuryArraySizeDefault { get; private set; } = 8;
-        public static int MaxStatLimit { get; private set; } = 5000; //TODO: make a file reader.
 
+        public const int weeksInMonth = 6; // number of weeks
+        public const int monthsInYear = 12; // number of months
+
+        
+        //Move these to Species Class
         public enum Handedness {
             Left,
             Right,
@@ -47,16 +46,25 @@ namespace SMercenaries.Global {
             Normal,
             High
         }
+
+        //Move this to Habitation
         public enum Gravity {
             HighG,
             StandardG,
             NullG
         }
+        //The only things I need left here.
+
+        //File Reader Stats to be figured out later.
+        // private static string VALUE_CHANGE_LIST_FILEPATH = "Assets/Scripts/Editor/Config/valueChangeList.csv";
+        //private static Int32 randomSeed;
+        public static int MaxStatLimit { get; private set; } = 5000; //TODO: implement the file reader
+        public static int InjuryArraySizeDefault = 8;
 
         public System.Random rand = new System.Random(); //TODO: Implement randomSeed into this
 
 
-
+        public static AllScriptableObjects allSos = Resources.Load<AllScriptableObjects>("/Assets/Scripts/People/AllScriptableObjects");
 
 
     }

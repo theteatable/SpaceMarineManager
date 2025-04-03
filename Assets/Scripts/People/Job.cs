@@ -16,6 +16,7 @@ namespace SMercenaries.People
         public bool isFullTime;
         public int monthsUntilTrained;        
         public int monthsUntilMaxBonus;
+        public JobType jobType;
 
         public int jobDanger; //Gets this from locations/job details.
                               //The longer you survive, the more experience you get?
@@ -62,7 +63,14 @@ namespace SMercenaries.People
             Urban,
             RuralNonFood
         }
-       
+        private void Awake()
+        {
+            Globals.allSos.AddJob(this);
+        }
+        private void OnDestroy()
+        {
+            Globals.allSos.RemoveJob(this);
+        }
 
     }
 }
