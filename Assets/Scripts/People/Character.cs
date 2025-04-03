@@ -98,7 +98,7 @@ namespace SMercenaries.People
 
                 // Set species Information
                 characterData.species = species != null ? species : recruitLocation.GetRandomSpecies();
-                characterData.personality = tPersonality != null ? characterData.personality.getRandomPersonality(tPersonality) : characterData.species.getRandomPersonality();
+                characterData.personality = tPersonality != null ? characterData.personality.getRandomPersonality(tPersonality) : characterData.species.GetRandomPersonality();
                 
                 int monthsOfLife = characterData.species.lifeSpan - characterData.species.ageOfMaturity;
                 Age age;

@@ -62,10 +62,7 @@ namespace SMercenaries.People
             Urban,
             RuralNonFood
         }
-
-
-
-        
+       
 
     }
 }

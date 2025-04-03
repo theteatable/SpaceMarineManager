@@ -5,6 +5,8 @@ using System.Xml.Serialization;
 using UnityEditor;
 using UnityEngine;
 using System;
+using SMercenaries.People;
+
 
 namespace SMercenaries.Global {
     public class Globals : MonoBehaviour {
@@ -21,7 +23,6 @@ namespace SMercenaries.Global {
                 Instance = this;
             }
         }
-
        // private static string VALUE_CHANGE_LIST_FILEPATH = "Assets/Scripts/Editor/Config/valueChangeList.csv";
         //private static Int32 randomSeed;
 
@@ -55,30 +56,6 @@ namespace SMercenaries.Global {
         public System.Random rand = new System.Random(); //TODO: Implement randomSeed into this
 
 
-
-        //private static List<DataValue> ReadFromCSV(string path)
-        //{
-        //    StreamReader streamReader = new StreamReader(path);
-        //    if (streamReader == null)
-        //    {
-        //        return null;
-        //    }
-        //    List<DataValue> data = new List<DataValue>();
-        //    string line = streamReader.ReadLine();
-        //    var titleSplit = line.Split(',');
-        //    _editorWindow.headerName = titleSplit[0];
-        //    _editorWindow.headerValueChange = titleSplit[1];
-        //    _editorWindow.headerMin = titleSplit[2];
-        //    _editorWindow.headerMax = titleSplit[3];
-        //    while ((line = streamReader.ReadLine()) != null)
-        //    {
-        //        var lineSplit = line.Split(',');
-        //        var newDatum = new DataValue(lineSplit[0], int.Parse(lineSplit[1]), int.Parse(lineSplit[2]), int.Parse(lineSplit[3]));
-        //        data.Add(newDatum);
-        //    }
-        //    streamReader.Dispose();
-        //    return data;
-        //}
 
 
 
